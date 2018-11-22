@@ -1,0 +1,39 @@
+<fieldset class="repeating_attacks">
+    <td><input type="text" name="attr_attackname" class="small_name_width" /></td>
+    <td>{% raw %}<button type="roll" value="&{template:attack} {{name=@{attackname}}} {{attack=[[(1d20 + @{attacktotal})]]}} {{damage=[[(@{attackdmg} + @{attackattr} + @{attackitem} + @{attackmisc})]]}} {{actions=(A)}} " ></button>{% endraw %}</td>
+    <input type="checkbox" class="sheet-block-switch spell_details">
+    <div class="sheet-block-b">
+        <table>
+            <tr class="table_header_details">
+                <td></td>
+                <td>Attack Attr</td>
+                <td>Attack Prof</td>
+                <td>Attack Item</td>
+                <td>Attack Misc</td>
+            </tr>
+            <tr>
+                <td><input class="skinny_number" type="number" name="attr_attacktotal" value="@{attackattr} + @{attackprof} + @{attackitem} + @{attackmisc}" disabled="true" /></td>
+                <td><input class="skinny_number" type="number" name="attr_attackattr" value="0" /></td>
+                <td><input class="skinny_number" type="number" name="attr_attackprof" value="0" /></td>
+                <td><input class="skinny_number" type="number" name="attr_attackitem" value="0" /></td>
+                <td><input class="skinny_number" type="number" name="attr_attackmisc" value="0" /></td>
+            </tr>
+        </table>
+        <table>
+            <tr class="table_header_details">
+                <td>Damage Dice</td>
+                <td>Damage Attribute</td>
+                <td>Damage Item Bonus</td>
+                <td>Damage Misc Bonus</td>
+                <td>Properties</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="attr_attackdmg" class="dice_input_width" /></td>
+                <td><input class="skinny_number" type="number" name="attr_attackattr" value="0" /></td>
+                <td><input class="skinny_number" type="number" name="attr_attackitem" value="0" /></td>
+                <td><input class="skinny_number" type="number" name="attr_attackmisc" value="0" /></td>
+                <td><input type="text" name="attr_attacktraits" /></td>
+            </tr>
+        </table>
+    </div>
+</fieldset>

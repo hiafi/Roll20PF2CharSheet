@@ -1,0 +1,40 @@
+<div>
+    <span>Character Name</span> <input type="text" name="name" />
+</div>
+<div>
+    <span>Class</span> <input type="text" name="attr_class" />
+    <span>Level</span> <input type="number" name="attr_Level" value="1" />
+</div>
+
+<input type="radio" name="attr_tab" class="sheet-tab sheet-tab1" value="1" checked="checked"><span title="Character"></span>
+<input type="radio" name="attr_tab" class="sheet-tab sheet-tab2" value="2"><span title="Feats / Powers"></span>
+<input type="radio" name="attr_tab" class="sheet-tab sheet-tab3" value="3"><span title="Spells"></span>
+
+{{ main_tab|safe }}
+{{ feats_tab|safe }}
+{{ powers_tab|safe }}
+
+
+{% raw %}
+<rolltemplate class="sheet-rolltemplate-action">
+    <table>
+      <tr><th>{{name}} {{actions}}</th></tr>
+        <tr><td>{{text}}</td></tr>
+    </table>
+</rolltemplate>
+
+<rolltemplate class="sheet-rolltemplate-skill">
+    <table>
+      <tr><th>{{name}}</th></tr>
+        <tr><td>{{value}}</td></tr>
+    </table>
+</rolltemplate>
+
+<rolltemplate class="sheet-rolltemplate-attack">
+    <table>
+      <tr><th>{{name}}</th><th></th></tr>
+        <tr><td>Attack: </td><td>{{attack}}</td></tr>
+        <tr><td>Damage: </td><td>{{damage}}</td></tr>
+    </table>
+</rolltemplate>
+{% endraw %}

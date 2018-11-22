@@ -1,0 +1,39 @@
+<span>Armor Check Penalty: </span><input class="skinny_number" type="number" name="attr_skill_armor_check" value="0" /> <br />
+<table>
+    <tr class="table_header_details">
+        <td></td>
+        <td></td>
+        <td>Total</td>
+        <td>Sig</td>
+        <td>Attr</td>
+        <td>Prof</td>
+        <td>Item</td>
+        <td>Misc</td>
+        <td>Armor Penalty</td>
+    </tr>
+{% for skill, attr, armor_check, custom in skills%}
+    <tr>
+        <td class="skill_name">{{skill}}</td>
+        <td>{% raw %}<button type="roll" value="&{template:skill} {{name={%endraw%}{{skill}}{%raw%}}} {{value=[[1d20 + (@{skill_{%endraw%}{{skill}}{%raw%}_total})]]}} " ></button>{% endraw %}</td>
+        <td><input class="skinny_number" type="number" name="attr_skill_{{skill}}_total" value="(@{attr_{{attr}}_mod} + @{skill_{{skill}}_prof} + @{skill_{{skill}}_item} + @{skill_{{skill}}_misc} + @{skill_{{skill}}_armor})" disabled="true" /></td>
+        <td><input type="checkbox" name="attr_skill_{{skill}}_sig" /></td>
+        <td><input class="skinny_number" type="number" name="attr_skill_{{skill}}_attr" value="(@{attr_{{attr}}_mod})" disabled="true"  /></td>
+        <td>
+            <select class="teml_text" name="attr_skill_{{ skill }}_prof">
+                <option value="floor(@{level} / 2)">U</option>
+                <option value="@{level}">T</option>
+                <option value="@{level}+2">E</option>
+                <option value="@{level}+4">M</option>
+                <option value="@{level}+6">L</option>
+            </select>
+        </td>
+        <td><input class="skinny_number" type="number" name="attr_skill_{{skill}}_item" value="0" /></td>
+        <td><input class="skinny_number" type="number" name="attr_skill_{{skill}}_misc" value="0" /></td>
+        {% if armor_check %}
+            <td><input class="skinny_number" type="number" name="attr_skill_{{skill}}_armor" value="(@{skill_armor_check})" disabled="true" /></td>
+        {% else %}
+            <td><input class="skinny_number" type="number" name="attr_skill_{{skill}}_armor" value="0" disabled="true" hidden="hidden" /></td>
+        {% endif %}
+    </tr>
+{% endfor %}
+</table>

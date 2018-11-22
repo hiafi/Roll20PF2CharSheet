@@ -1,0 +1,94 @@
+<div class="sheet-tab-content sheet-tab3">
+    <div>
+        <table>
+            <tr class="table_header_details">
+                <td></td>
+                <td>Total</td>
+                <td>Attr</td>
+                <td>Prof</td>
+                <td>Item</td>
+                <td>Misc</td>
+            </tr>
+            <tr>
+                <td>Spell Roll DC </td>
+                <td><input class="skinny_number" type="number" name="attr_spells_dc_total" value="(@{Level} + @{spell_dc_attr} + @{attr_spell_dc_prof} + @{attr_spell_dc_item} + @{attr_spell_dc_misc})" disabled="true" /></td>
+                <td><input class="skinny_number" type="number" name="attr_spell_dc_attr" value="(@{attr_{{attr}}_mod})" /></td>
+                <td><input class="skinny_number" type="number" name="attr_spell_dc_prof" value="-2" /></td>
+                <td><input class="skinny_number" type="number" name="attr_spell_dc_item" value="0" /></td>
+                <td><input class="skinny_number" type="number" name="attr_spell_dc_misc" value="0" /></td>
+            </tr>
+        </table>
+    </div>
+    <div class='sheet-3colrow'>
+        {% for grouping in [["Cantrips", 1, 2], [3, 4, 5], [6, 7, 8, 9, 10]] %}
+        <div class='sheet-col'>
+            {% for level in grouping %}
+            <h1>{% if level!="Cantrips" %}Level {% endif %}{{level}}</h1>
+            {% if level != "Cantrips" %}
+            <div>
+                <table>
+                    <tr class="table_header_details">
+                        <td>Slots Available</td>
+                        <td>Max Slots</td>
+                    </tr>
+                    <tr>
+                        <td><input class="skinny_number" type="number" name="attr_spell{{level}}_current" value="0" /></td>
+                        <td><input class="skinny_number" type="number" name="attr_spell{{level}}_max" value="0" /></td>
+                    </tr>
+                </table>
+            </div>
+            {% endif %}
+            <fieldset class="repeating_spells{{level}}">
+                <div>
+                    <table class="ability_table">
+                        <tr class="table_header_details"><td>Prep</td></tr>
+                        <tr>
+                            <td><input type="checkbox" name="attr_spellprep" /></td>
+                            <td><input class="ability_name" type="text" name="attr_spellname" /></td>
+                            <td>{% raw %}<button type="roll" value="&{template:action} {{name=@{spellname}}} {{text=@{spelltext}}} {{actions=(A)}} " ></button>{% endraw %}</td>
+                        </tr>
+                    </table>
+                    <input type="checkbox" class="sheet-block-switch spell_details">
+                    <div class="sheet-block-b">
+
+                        <div>
+                            <span>V:</span><input type="checkbox" name="attr_spellverbal" />
+                            <span>S:</span><input type="checkbox" name="attr_spellsometic" />
+                            <span>M:</span><input type="checkbox" name="attr_spellmaterial" />
+                            <span>Reaction:</span><input type="checkbox" name="attr_spellreaction" />
+                        </div>
+                        <div>
+                            <table>
+                                <tr class="table_header_details"><td>Range</td></tr>
+                                <tr><td><input type="text" name="attr_spellrange" /></td></tr>
+                            </table>
+                            <table>
+                                <tr class="table_header_details"><td>Area</td></tr>
+                                <tr><td><input type="text" name="attr_spellarea" /></td></tr>
+                            </table>
+                            <table>
+                                <tr class="table_header_details"><td>Targets</td></tr>
+                                <tr><td><input type="text" name="attr_spelltargets" /></td></tr>
+                            </table>
+                            <table>
+                                <tr class="table_header_details"><td>Casting</td></tr>
+                                <tr><td><input type="text" name="attr_spellcasttime" /></td></tr>
+                            </table>
+                            <table>
+                                <tr class="table_header_details"><td>Duration</td></tr>
+                                <tr><td><input type="text" name="attr_spellduration" /></td></tr>
+                            </table>
+                        </div>
+                        <textarea name="attr_spelltext"></textarea>
+                        <div>
+                            <div>Hightened Effects:</div>
+                            <textarea name="attr_spellhighten"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>

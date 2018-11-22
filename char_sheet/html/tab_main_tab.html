@@ -1,0 +1,36 @@
+<div class="sheet-tab-content sheet-tab1">
+    <div class='sheet-2colrow'>
+        <div class='sheet-col'>
+
+            <div>
+                <h1>Attributes</h1>
+            </div>
+            {{ attributes_block|safe }}
+
+            <div>
+                <h1>Defenses</h1>
+            </div>
+            <table>
+                <tr>
+                    <td>{{ hp_block|safe }}</td>
+                    <td>{{ stam_block|safe }}</td>
+                </tr>
+            </table>
+            {{ armor_block|safe }}
+        </div>
+
+        <div class='sheet-col'>
+            <div>
+                <h1>Skills</h1>
+            </div>
+            {{ skills_block|safe }}
+
+
+            <div>
+                <h1>Attacks</h1>
+            </div>
+            {{ attacks_block|safe }}
+
+        </div>
+    </div>
+</div>

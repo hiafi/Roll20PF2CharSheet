@@ -1,0 +1,93 @@
+<div class="sheet-tab-content sheet-tab2">
+    <div class='sheet-3colrow'>
+        <div class='sheet-col'>
+            <h1>Ancestry Feats</h1>
+            <fieldset class="repeating_racials">
+                <input type="text" class="ability_name" name="attr_racialskillname" />
+                {% raw %}<button type="roll" value="&{template:action} {{name=@{racialskillname}}} {{text=@{racialskilltext}}} {{actions=@{racialskillactions}}} " ></button>{% endraw %}
+                <input type="checkbox" class="sheet-block-switch">
+                <div class="sheet-block-b">
+                    <span>Actions </span><input type="text" name="attr_racialskillactions" />
+                    <textarea name="attr_racialskilltext"></textarea>
+                </div>
+            </fieldset>
+
+            <h1>Skill Feats</h1>
+            <fieldset class="repeating_skillfeats">
+                <input type="text" class="ability_name" name="attr_skillname" />
+                {% raw %}<button type="roll" value="&{template:action} {{name=@{skillname}}} {{text=@{skilltext}}} {{actions=@{skillactions}}} " ></button>{% endraw %}
+                <input type="checkbox" class="sheet-block-switch">
+                <div class="sheet-block-b">
+                    <span>Actions </span><input type="text" name="attr_skillactions" />
+                    <textarea name="attr_skilltext"></textarea>
+                </div>
+            </fieldset>
+
+        </div>
+        <div class='sheet-col'>
+            <h1>Class Feats</h1>
+            <fieldset class="repeating_classfeats">
+                <input type="text" class="ability_name" name="attr_classfeatname" />
+                {% raw %}<button type="roll" value="&{template:action} {{name=@{classfeatname}}} {{text=@{classfeattext}}} {{actions=@{classfeatactions}}} " ></button>{% endraw %}
+                <input type="checkbox" class="sheet-block-switch">
+                <div class="sheet-block-b">
+                    <span>Actions </span><input type="text" name="attr_classfeatactions" />
+                    <textarea name="attr_classfeattext"></textarea>
+                </div>
+            </fieldset>
+        </div>
+        <div class='sheet-col'>
+            <h1>Powers</h1>
+            <div>
+                <table>
+                    <tr class="table_header_details">
+                        <td></td>
+                        <td>Current</td>
+                        <td>Max</td>
+                    </tr>
+                    <tr>
+                        <td>Resonance</td>
+                        <td><input class="skinny_number" type="number" name="attr_powers_resonance_current" value="0"/></td>
+                        <td><input class="skinny_number" type="number" name="attr_powers_resonance_max" value="(@{Level} + @{attr_Charisma_mod})" disabled="true" /></td>
+                    </tr>
+                </table>
+            </div>
+            <hr />
+            <div>
+                <table>
+                    <tr class="table_header_details">
+                        <td></td>
+                        <td>Max</td>
+                        <td>Attr</td>
+                        <td>Feats</td>
+                        <td>Misc</td>
+                    </tr>
+                    <tr>
+                        <td class="skill_name">Spell Points Max</td>
+                        <td><input class="skinny_number" type="number" name="attr_powers_spell_points_max" value="(@{powers_spell_points_attr} + @{powers_spell_points_feats} + @{powers_spell_points_misc})" disabled="true" /></td>
+                        <td><input class="skinny_number" type="number" name="attr_powers_spell_points_attr" value="0" /></td>
+                        <td><input class="skinny_number" type="number" name="attr_powers_spell_points_feats" value="0"/></td>
+                        <td><input class="skinny_number" type="number" name="attr_powers_spell_points_misc" value="0"/></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td class="skill_name">Current</td>
+                        <td><td><input class="skinny_number" type="number" name="attr_powers_spell_points_current" value="0"/></td></td>
+                    </tr>
+                </table>
+            </div>
+            <hr />
+            <fieldset class="repeating_powers">
+                <input type="text" class="ability_name" name="attr_powername" />
+                {% raw %}<button type="roll" value="&{template:action} {{name=@{powername}}} {{text=@{powertext}}} {{actions=@{poweractions}}} " ></button>{% endraw %}
+                <input type="checkbox" class="sheet-block-switch">
+                <div class="sheet-block-b">
+                    <span>Cost: </span><input type="number" name="attr_powercost" />
+                    <span>Actions </span><input type="text" name="attr_poweractions" />
+                    <textarea name="attr_powertext"></textarea>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
