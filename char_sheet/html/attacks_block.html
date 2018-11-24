@@ -1,6 +1,6 @@
 <fieldset class="repeating_attacks">
     <td><input type="text" name="attr_attackname" class="small_name_width" /></td>
-    <td>{% raw %}<button type="roll" value="&{template:attack} {{name=@{attackname}}} {{attack=[[(1d20 + @{attacktotal})]]}} {{damage=[[(@{attackdmg} + @{attackattr} + @{attackitem} + @{attackmisc})]]}} {{actions=(A)}} " ></button>{% endraw %}</td>
+    <td>{% raw %}<button type="roll" value="&{template:attack} {{name=@{attackname}}} {{attack=[[(1d20 + @{attacktotal})]]}} {{damage=[[@{attack_dmg_dice}+@{attack_dmg_attr}+@{attack_dmg_item}+@{attack_dmg_misc}]]}} {{actions=@{attack_actions}}} " ></button>{% endraw %}</td>
     <input type="checkbox" class="sheet-block-switch spell_details">
     <div class="sheet-block-b">
         <table>
@@ -13,8 +13,23 @@
             </tr>
             <tr>
                 <td><input class="skinny_number" type="number" name="attr_attacktotal" value="@{attackattr} + @{attackprof} + @{attackitem} + @{attackmisc}" disabled="true" /></td>
-                <td><input class="skinny_number" type="number" name="attr_attackattr" value="0" /></td>
-                <td><input class="skinny_number" type="number" name="attr_attackprof" value="0" /></td>
+                <td><select name="attr_attackattr" class="teml_text">
+                    <option value="@{attr_Strength_mod}">STR</option>
+                    <option value="@{attr_Dexterity_mod}">DEX</option>
+                    <option value="@{attr_Constitution_mod}">CON</option>
+                    <option value="@{attr_Intelligence_mod}">INT</option>
+                    <option value="@{attr_Wisdom_mod}">WIS</option>
+                    <option value="@{attr_Charisma_mod}">CHA</option>
+                </select></td>
+                <td>
+                    <select class="teml_text" name="attr_attackprof">
+                        <option value="floor(@{level} / 2)">U</option>
+                        <option value="@{level}">T</option>
+                        <option value="@{level}+2">E</option>
+                        <option value="@{level}+4">M</option>
+                        <option value="@{level}+6">L</option>
+                    </select>
+                </td>
                 <td><input class="skinny_number" type="number" name="attr_attackitem" value="0" /></td>
                 <td><input class="skinny_number" type="number" name="attr_attackmisc" value="0" /></td>
             </tr>
@@ -25,13 +40,35 @@
                 <td>Damage Attribute</td>
                 <td>Damage Item Bonus</td>
                 <td>Damage Misc Bonus</td>
+
+            </tr>
+            <tr>
+                <td><input type="text" name="attr_attack_dmg_dice" class="dice_input_width" /></td>
+                <td><select name="attr_attack_dmg_attr" class="teml_text" >
+                    <option value="@{attr_Strength_mod}">STR</option>
+                    <option value="@{attr_Dexterity_mod}">DEX</option>
+                    <option value="@{attr_Constitution_mod}">CON</option>
+                    <option value="@{attr_Intelligence_mod}">INT</option>
+                    <option value="@{attr_Wisdom_mod}">WIS</option>
+                    <option value="@{attr_Charisma_mod}">CHA</option>
+                </select></td>
+                <td><input class="skinny_number" type="number" name="attr_attack_dmg_item" value="0" /></td>
+                <td><input class="skinny_number" type="number" name="attr_attack_dmg_misc" value="0" /></td>
+
+            </tr>
+        </table>
+        <table>
+            <tr class="table_header_details">
+                <td>Actions</td>
                 <td>Properties</td>
             </tr>
             <tr>
-                <td><input type="text" name="attr_attackdmg" class="dice_input_width" /></td>
-                <td><input class="skinny_number" type="number" name="attr_attackattr" value="0" /></td>
-                <td><input class="skinny_number" type="number" name="attr_attackitem" value="0" /></td>
-                <td><input class="skinny_number" type="number" name="attr_attackmisc" value="0" /></td>
+                <td><select name="attr_attack_actions" class="teml_text" >
+                    <option value="Free">0</option>
+                    <option value="(A)">1</option>
+                    <option value="(A)(A)">2</option>
+                    <option value="(A)(A)(A)">3</option>
+                </select></td>
                 <td><input type="text" name="attr_attacktraits" /></td>
             </tr>
         </table>

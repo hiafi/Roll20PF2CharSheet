@@ -15,6 +15,8 @@ attrs = [
 ]
 
 skills = [
+    ("Perception", "Wisdom", False, False),
+    ("", "", False, False),
     ("Acrobatics", "Dexterity", True, False),
     ("Arcana", "Intelligence", False, False),
     ("Athletics", "Strength", True, False),
@@ -22,8 +24,6 @@ skills = [
     ("Deception", "Charisma", False, False),
     ("Diplomacy", "Charisma", False, False),
     ("Intimidation", "Charisma", False, False),
-    ("Lore", "Intelligence", False, False),
-    ("Lore", "Intelligence", False, False),
     ("Medicine", "Wisdom", False, False),
     ("Nature", "Wisdom", False, False),
     ("Occultism", "Intelligence", False, False),
@@ -36,10 +36,20 @@ skills = [
 ]
 
 defenses = [
-    ("Fortitude", "Strength"),
+    ("Fortitude", "Constitution"),
     ("Reflex", "Dexterity"),
     ("Will", "Wisdom"),
 ]
+
+
+def gen_char_info():
+    template = env.get_template('character_info.html')
+    return template.render({})
+
+
+def gen_roll_templates():
+    template = env.get_template('roll_templates.html')
+    return template.render({})
 
 
 def get_teml_block(attr_name):
@@ -108,13 +118,30 @@ def gen_feats_tab():
     })
 
 
+def gen_equip_tab():
+    template = env.get_template('tab_equipment_tab.html')
+    return template.render({
+
+    })
+
+
+def gen_char_data_tab():
+    template = env.get_template('tab_character_data.html')
+    return template.render({
+
+    })
+
+
 def main():
     f = open("output.html", "w")
     template = env.get_template('sheet.html')
     f.write(template.render({
+        "char_info": gen_char_info(),
         "main_tab": gen_first_tab(),
         "powers_tab": gen_powers_tab(),
         "feats_tab": gen_feats_tab(),
+        "equip_tab": gen_equip_tab(),
+        "roll_templates": gen_roll_templates()
     }))
     f.close()
 

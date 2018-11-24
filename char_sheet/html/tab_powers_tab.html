@@ -1,4 +1,4 @@
-<div class="sheet-tab-content sheet-tab3">
+<div class="sheet-tab-content sheet-tab-powers">
     <div>
         <table>
             <tr class="table_header_details">
@@ -11,9 +11,24 @@
             </tr>
             <tr>
                 <td>Spell Roll DC </td>
-                <td><input class="skinny_number" type="number" name="attr_spells_dc_total" value="(@{Level} + @{spell_dc_attr} + @{attr_spell_dc_prof} + @{attr_spell_dc_item} + @{attr_spell_dc_misc})" disabled="true" /></td>
-                <td><input class="skinny_number" type="number" name="attr_spell_dc_attr" value="(@{attr_{{attr}}_mod})" /></td>
-                <td><input class="skinny_number" type="number" name="attr_spell_dc_prof" value="-2" /></td>
+                <td><input class="skinny_number" type="number" name="attr_spells_dc_total" value="(@{spell_dc_attr} + @{spell_dc_prof} + @{spell_dc_item} + @{spell_dc_misc})" disabled="true" /></td>
+                <td><select name="attr_spell_dc_attr" class="teml_text" >
+                    <option value="@{attr_Strength_mod}">STR</option>
+                    <option value="@{attr_Dexterity_mod}">DEX</option>
+                    <option value="@{attr_Constitution_mod}">CON</option>
+                    <option value="@{attr_Intelligence_mod}">INT</option>
+                    <option value="@{attr_Wisdom_mod}">WIS</option>
+                    <option value="@{attr_Charisma_mod}">CHA</option>
+                </select></td>
+                 <td>
+                    <select class="teml_text" name="attr_spell_dc_prof">
+                        <option value="floor(@{level} / 2)">U</option>
+                        <option value="@{level}">T</option>
+                        <option value="@{level}+2">E</option>
+                        <option value="@{level}+4">M</option>
+                        <option value="@{level}+6">L</option>
+                    </select>
+                </td>
                 <td><input class="skinny_number" type="number" name="attr_spell_dc_item" value="0" /></td>
                 <td><input class="skinny_number" type="number" name="attr_spell_dc_misc" value="0" /></td>
             </tr>

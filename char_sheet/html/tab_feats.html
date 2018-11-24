@@ -1,4 +1,4 @@
-<div class="sheet-tab-content sheet-tab2">
+<div class="sheet-tab-content sheet-tab-feats">
     <div class='sheet-3colrow'>
         <div class='sheet-col'>
             <h1>Ancestry Feats</h1>
@@ -65,7 +65,14 @@
                     <tr>
                         <td class="skill_name">Spell Points Max</td>
                         <td><input class="skinny_number" type="number" name="attr_powers_spell_points_max" value="(@{powers_spell_points_attr} + @{powers_spell_points_feats} + @{powers_spell_points_misc})" disabled="true" /></td>
-                        <td><input class="skinny_number" type="number" name="attr_powers_spell_points_attr" value="0" /></td>
+                        <td><select name="attr_powers_spell_points_attr" class="teml_text" >
+                            <option value="@{attr_Strength_mod}">STR</option>
+                            <option value="@{attr_Dexterity_mod}">DEX</option>
+                            <option value="@{attr_Constitution_mod}">CON</option>
+                            <option value="@{attr_Intelligence_mod}">INT</option>
+                            <option value="@{attr_Wisdom_mod}">WIS</option>
+                            <option value="@{attr_Charisma_mod}">CHA</option>
+                        </select></td>
                         <td><input class="skinny_number" type="number" name="attr_powers_spell_points_feats" value="0"/></td>
                         <td><input class="skinny_number" type="number" name="attr_powers_spell_points_misc" value="0"/></td>
                     </tr>

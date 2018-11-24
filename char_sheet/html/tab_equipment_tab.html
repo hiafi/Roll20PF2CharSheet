@@ -1,0 +1,60 @@
+<div class="sheet-tab-content sheet-tab-equipment">
+    <div class='sheet-2colrow'>
+        <div class='sheet-col'>
+            <h1>Money</h1>
+            <table>
+                <tr>
+                    <td></td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td class="skill_name">Gold</td>
+                    <td><input class="skinny_number" type="number" name="attr_gold_gold" value="0" /></td>
+                </tr>
+                <tr>
+                    <td class="skill_name">Silver</td>
+                    <td><input class="skinny_number" type="number" name="attr_gold_silver" value="0" /></td>
+                </tr>
+                <tr>
+                    <td class="skill_name">Copper</td>
+                    <td><input class="skinny_number" type="number" name="attr_gold_copper" value="0" /></td>
+                </tr>
+            </table>
+            <h1>Bulk</h1>
+            <table>
+                <tr>
+                    <td class="skill_name">Bulk Max</td>
+                    <td><input class="skinny_number" type="number" name="attr_bulk_max" value="0" /></td>
+                </tr>
+                <tr>
+                    <td class="skill_name">Bulk</td>
+                    <td><input class="skinny_number" type="number" name="attr_bulk" value="0" /></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class='sheet-col'>
+            <h1>Inventory</h1>
+            <fieldset class="inventory">
+                <input type="checkbox" class="sheet-block-switch">
+                <table>
+                    <tr class="table_header_details">
+                        <td></td>
+                        <td>Quantity</td>
+                        <td>Bulk</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="attr_inventory_name" /></td>
+                        <td><input class="skinny_number" type="number" name="attr_inventory_qty" value="1" /></td>
+                        <td><input class="skinny_number" type="text" name="attr_inventory_bulk" value="0" /></td>
+                    </tr>
+
+                </table>
+
+                <div class="sheet-block-b">
+                    <textarea name="attr_inventory_description"></textarea>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>

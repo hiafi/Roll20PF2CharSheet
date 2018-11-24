@@ -5,8 +5,8 @@
         <td class="normal_hp">Temp {{ proper_hp_name }}</td>
     </tr>
     <tr>
-        <td><input class="normal_hp" type="number" name="attr_Max_{{ hp_attr }}" value="0" /></td>
-        <td><input class="normal_hp" type="number" name="attr_Temp_{{ hp_attr }}" value="0" /></td>
+        <td class="normal_hp_value"><input type="number" name="attr_Max_{{ hp_attr }}" value="0" /></td>
+        <td class="normal_hp_value"><input type="number" name="attr_Temp_{{ hp_attr }}" value="0" /></td>
     </tr>
 </table>
 
@@ -15,6 +15,6 @@
         <td class="wide_hp">Current {{ proper_hp_name }}</td>
     </tr>
     <tr>
-        <td><input class="wide_hp" type="number" name="attr_{{ hp_attr }}" value="0" /></td>
+        <td><input class="wide_hp_value" type="number" name="attr_{{ hp_attr }}" value="0" /></td>
     </tr>
 </table>
