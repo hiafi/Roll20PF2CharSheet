@@ -3,11 +3,6 @@
         <td></td>
         <td>Mod</td>
         <td>Score</td>
-        <td>Racial</td>
-        <td>BG</td>
-        <td>Class</td>
-        <td>Bonus</td>
-        <td>Misc</td>
         <td>Penalty</td>
     </tr>
     {% for attr in attributes %}
@@ -15,12 +10,7 @@
     <tr>
     <td class="skill_name">{{attr}}</td>
     <td><input class="skinny_number" type="number" name="attr_attr_{{attr}}_mod" value="(floor((@{attr_{{attr}}_value} - 10)/2))" disabled="true" /></td>
-    <td><input class="skinny_number" type="number" name="attr_attr_{{attr}}_value" value="(10 + @{attr_{{attr}}_racial} + @{attr_{{attr}}_bg} + @{attr_{{attr}}_class} + @{attr_{{attr}}_bonus} + @{attr_{{attr}}_misc} + @{attr_{{attr}}_penalty})" disabled="true" /></td>
-    <td><input class="skinny_number" type="number" name="attr_attr_{{attr}}_racial" value="0" /></td>
-    <td><input class="skinny_number" type="number" name="attr_attr_{{attr}}_bg" value="0" /></td>
-    <td><input class="skinny_number" type="number" name="attr_attr_{{attr}}_class" value="0" /></td>
-    <td><input class="skinny_number" type="number" name="attr_attr_{{attr}}_bonus" value="0" /></td>
-    <td><input class="skinny_number" type="number" name="attr_attr_{{attr}}_misc" value="0" /></td>
+    <td><input class="skinny_number" type="number" name="attr_attr_{{attr}}_value" value="10" /></td>
     <td><input class="skinny_number" type="number" name="attr_attr_{{attr}}_penalty" value="0" /></td>
     </tr>
     <input type="text" name="attr_{{attr}}_min" value="0" hidden="true" />

@@ -62,11 +62,6 @@ def gen_hp_block():
     return template.render({"proper_hp_name": "HP", "hp_attr": "hp"})
 
 
-def gen_stam_block():
-    template = env.get_template('hp_block.html')
-    return template.render({"proper_hp_name": "Stamina", "hp_attr": "stam"})
-
-
 def gen_def_block():
     template = env.get_template('armor_block.html')
     return template.render({
@@ -99,7 +94,6 @@ def gen_first_tab():
         "skills_block": gen_skills_block(),
         "attacks_block": gen_attack_block(),
         "hp_block": gen_hp_block(),
-        "stam_block": gen_stam_block(),
         "armor_block": gen_def_block()
     })
 
@@ -132,6 +126,21 @@ def gen_char_data_tab():
     })
 
 
+def gen_character_config():
+    template = env.get_template('character_config.html')
+    return template.render({"attr_options": gen_attribute_options()})
+
+
+def gen_attribute_options():
+    template = env.get_template('attr_options.html')
+    return template.render({})
+
+
+def gen_scripts():
+    template = env.get_template('scripts.js')
+    return template.render({})
+
+
 def main():
     f = open("output.html", "w")
     template = env.get_template('sheet.html')
@@ -141,7 +150,9 @@ def main():
         "powers_tab": gen_powers_tab(),
         "feats_tab": gen_feats_tab(),
         "equip_tab": gen_equip_tab(),
-        "roll_templates": gen_roll_templates()
+        "character_config": gen_character_config(),
+        "roll_templates": gen_roll_templates(),
+        "scripts": gen_scripts()
     }))
     f.close()
 

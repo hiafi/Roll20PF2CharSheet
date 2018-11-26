@@ -88,6 +88,10 @@ class Section(object):
 class Feat(Section):
 
     @property
+    def key_name(self):
+        return re.search("(.+) Feat \d+", self.title_text).group(1)
+
+    @property
     def required_level(self):
         return re.search(r"(\d+)", self.title_text).group(1)
 
@@ -204,9 +208,12 @@ class RacePage(GenericPage):
 
     def to_dict(self):
         return_dict = super(RacePage, self).to_dict()
-        return_dict["hp"] = re.search(r"<b>Hit Points</b> (\d+)", self.sections.get("Overview").contents_text).group(1)
-        return_dict["size"] = re.search(r"\| <strong>Size</strong> (.+) \|", self.sections.get("Overview").contents_text).group(1)
-        return_dict["speed"] = re.search(r"\| <strong>Speed</strong> (\d+)", self.sections.get("Overview").contents_text).group(1)
+        section_name = "Overview"
+        if self.name == 'human':
+            section_name = "Human Adventurers"
+        return_dict["hp"] = int(re.search(r"(<b>)?Hit Points(</b>)? (?P<val>\d+)", self.sections.get(section_name).contents_text).group("val"))
+        return_dict["size"] = re.search(r"\| (<strong>)?Size(</strong>)? (?P<val>.+) \|", self.sections.get(section_name).contents_text).group("val")
+        return_dict["speed"] = re.search(r"\| (<strong>)?Speed(</strong>)? (?P<val>\d+)", self.sections.get(section_name).contents_text).group("val")
         return return_dict
 
 
@@ -246,30 +253,67 @@ class SpellPage(GenericPage):
         content = bulk_html(".article-content")(".ogn-childpages")
         return [c.get("href").split("/")[-2] for c in content.find("li > ul > li > a")]
 
-def main():
-    ancestries = ["dwarf"]
-    classes = ["barbarian"]
-    spells = SpellPage.get_all_spell_names()
 
-    # for a in ancestries:
-    #     race = RacePage(a)
-    #     race.parse()
-    #
-    # for c in classes:
-    #     clas = ClassPage(c)
-    #     clas.parse()
-    #
-    # feats = FeatsPage("")
-    # feats.parse()
+def write_spells():
+    write_objs(SpellPage, SpellPage.get_all_spell_names(), "spells")
 
-    f = open("spells.json", "w")
-    spell_dict = {}
-    for s in spells:
-        spell = SpellPage(s)
+
+def write_classes():
+    classes = [
+        "alchemist",
+        "barbarian",
+        "bard",
+        "cleric",
+        "druid",
+        "fighter",
+        "monk",
+        "paladin",
+        "ranger",
+        "rogue",
+        "sorcerer",
+        "wizard",
+    ]
+    write_objs(ClassPage, classes, fname="classes")
+
+
+def write_races():
+    classes = [
+        "dwarf",
+        "elf",
+        "gnome",
+        "goblin",
+        "halfling",
+        "human",
+        "dwarf",
+        "dwarf",
+    ]
+    write_objs(RacePage, classes, fname="races")
+
+
+def write_gen_feats():
+    feats = FeatsPage("")
+    feats.parse()
+
+
+def write_objs(page_obj=None, objs_to_get=None, fname="spells"):
+    write_dict = {}
+    for index, c in enumerate(objs_to_get):
+        spell = page_obj(c)
         spell.parse()
-        spell_dict[spell.name] = spell.to_dict()
-    f.write(json.dumps(spell_dict))
+        write_dict[spell.name] = spell.to_dict()
+        print("{}%".format(index / len(objs_to_get) * 100.0))
+    f = open("{}.json".format(fname), "w")
+    f.write(json.dumps(write_dict))
     f.close()
+
+
+def main():
+    write_races()
+    # write_classes()
+    write_gen_feats()
+    # write_spells()
+
+
 
 
 if __name__ == "__main__":

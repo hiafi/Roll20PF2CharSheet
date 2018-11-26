@@ -4,11 +4,17 @@
 <input type="radio" name="attr_tab" class="sheet-tab sheet-tab-feats" value="2"><span title="Feats / Powers"></span>
 <input type="radio" name="attr_tab" class="sheet-tab sheet-tab-powers" value="3"><span title="Spells"></span>
 <input type="radio" name="attr_tab" class="sheet-tab sheet-tab-equipment" value="4"><span title="Equipment"></span>
-<input type="radio" name="attr_tab" class="sheet-tab sheet-tab-char-data" value="5"><span title="Character Data"></span>
+<input type="radio" name="attr_tab" class="sheet-tab sheet-tab-char-config" value="5"><span title="Character Config"></span>
 
 {{ main_tab|safe }}
 {{ feats_tab|safe }}
 {{ powers_tab|safe }}
 {{ equip_tab|safe }}
+{{ character_config|safe }}
+
 
 {{ roll_templates|safe }}
+
+<script type="text/worker">
+{{ scripts|safe }}
+</script>

@@ -1,20 +1,46 @@
-
 <table>
     <tr>
-        <td class="normal_hp">Max {{ proper_hp_name }}</td>
-        <td class="normal_hp">Temp {{ proper_hp_name }}</td>
-    </tr>
-    <tr>
-        <td class="normal_hp_value"><input type="number" name="attr_Max_{{ hp_attr }}" value="0" /></td>
-        <td class="normal_hp_value"><input type="number" name="attr_Temp_{{ hp_attr }}" value="0" /></td>
+        <td class="hp_column">
+            <table>
+                <tr>
+                    <td class="normal_hp">Max HP</td>
+                    <td class="normal_hp">Temp HP</td>
+                </tr>
+                <tr>
+                    <td><input class="normal_hp_value" type="number" name="attr_max_hp" value="((@{attr_Constitution_mod} + 1) * @{level} + @{hp_race})" disabled="true" /></td>
+                    <td><input class="normal_hp_value" type="number" name="attr_temp_hp" value="0" /></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td class="wide_hp">Current HP</td>
+                </tr>
+                <tr>
+                    <td><input class="wide_hp_value" type="number" name="attr_hp" value="0" /></td>
+                </tr>
+            </table>
+        </td>
+        <td class="hp_column">
+            <table>
+                <tr>
+                    <td class="normal_hp">Max Stamina</td>
+                    <td class="normal_hp">Temp Stamina</td>
+                </tr>
+                <tr>
+                    <td><input class="normal_hp_value" type="number" name="attr_max_stamina" value="(@{stam_per_level} * @{level})" disabled="true" /></td>
+                    <td><input class="normal_hp_value" type="number" name="attr_temp_stamina" value="0" /></td>
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <td class="wide_hp">Current Stamina</td>
+                </tr>
+                <tr>
+                    <td><input class="wide_hp_value" type="number" name="attr_stamina" value="0" /></td>
+                </tr>
+            </table>
+        </td>
     </tr>
 </table>
 
-<table>
-    <tr>
-        <td class="wide_hp">Current {{ proper_hp_name }}</td>
-    </tr>
-    <tr>
-        <td><input class="wide_hp_value" type="number" name="attr_{{ hp_attr }}" value="0" /></td>
-    </tr>
-</table>
