@@ -99,3 +99,8 @@ ENV/
 .mypy_cache/
 
 char_sheet/output.html
+char_sheet/classes.json
+char_sheet/classes.json
+char_sheet/feats.json
+char_sheet/classes.json
+char_sheet/classes.json

@@ -2,6 +2,8 @@ import requests
 from lxml import html
 import re
 import json
+from char_sheet.pull_from_srd.ignores import IGNORES
+from char_sheet.pull_from_srd.overwrites import OVERWRITES
 
 from pyquery import PyQuery as pq
 from unidecode import unidecode
@@ -16,8 +18,11 @@ class Section(object):
     @staticmethod
     def create(title):
         try:
+            inner_html = title.find("span")
             if re.search(r"Feat (\d+)", title.find("span").text):
                 return Feat(title)
+            # elif re.search(r"Feat (\d+)", Section.parse_children_str(inner_html)):
+            #     return Feat(inner_html)
         except Exception:
             pass
         return Section(title)
@@ -38,7 +43,10 @@ class Section(object):
     def title_text(self):
         if self.title is None:
             return "Opening"
-        return self.title.find("span").text
+        if self.title.find("span").text is None:
+            print(self.title)
+            return None
+        return self.title.find("span").text.strip()
 
     def add_contents(self, content):
 
@@ -48,15 +56,18 @@ class Section(object):
     def key_name(self):
         return self.title_text
 
-    def to_dict(self):
+    def to_dict(self, ignore=None):
         return {
             "text": self.contents_text
         }
 
-    def parse_children_str(self, child_obj):
+    @staticmethod
+    def parse_children_str(child_obj):
         return str(html.tostring(child_obj))\
             .replace("<p>", "")\
-            .replace("</p>", "")
+            .replace("</p>", "")\
+            .replace("<span>", "")\
+            .replace("</span>", "")
 
     def content_text(self, content):
         if isinstance(content, Section):
@@ -107,7 +118,7 @@ class Feat(Section):
     def requirements(self):
         return self.find_term(r"<b>Requirements</b>: (.+)")
 
-    def to_dict(self):
+    def to_dict(self, ignore=None):
         return {
             "text": self.contents_text,
             "level": self.required_level,
@@ -147,7 +158,7 @@ class Spell(Section):
     def description(self):
         return self.find_term(r"Description (.+)", self.contents_text)
 
-    def to_dict(self):
+    def to_dict(self, ignore=None):
         return {
             "level": int(self.level) if self.level else None,
             "traits": self.traits,
@@ -174,10 +185,10 @@ class GenericPage(object):
         bulk_html = pq(requests.get(url).text)
         return bulk_html(".article-content")
 
-    def to_dict(self):
+    def to_dict(self, ignore=None):
         return {
-            s.key_name: s.to_dict()
-            for s in self.sections.values()
+            s.key_name or "": s.to_dict()
+            for s in self.sections.values() if ignore is None or s.key_name not in ignore
         }
 
     def pprint(self):
@@ -206,7 +217,7 @@ class RacePage(GenericPage):
     def url(self):
         return "http://pf2playtest.opengamingnetwork.com/ancestries/{}/".format(self.name)
 
-    def to_dict(self):
+    def to_dict(self, ignore=None):
         return_dict = super(RacePage, self).to_dict()
         section_name = "Overview"
         if self.name == 'human':
@@ -255,7 +266,7 @@ class SpellPage(GenericPage):
 
 
 def write_spells():
-    write_objs(SpellPage, SpellPage.get_all_spell_names(), "spells")
+    return {"spells": write_objs(SpellPage, SpellPage.get_all_spell_names(), "spells")}
 
 
 def write_classes():
@@ -273,7 +284,7 @@ def write_classes():
         "sorcerer",
         "wizard",
     ]
-    write_objs(ClassPage, classes, fname="classes")
+    return write_objs(ClassPage, classes)
 
 
 def write_races():
@@ -287,31 +298,41 @@ def write_races():
         "dwarf",
         "dwarf",
     ]
-    write_objs(RacePage, classes, fname="races")
+    return write_objs(RacePage, classes, ["Overview"])
 
 
 def write_gen_feats():
     feats = FeatsPage("")
     feats.parse()
+    ret = {"general": feats.to_dict(IGNORES.get("general", set()) | IGNORES.get("ALL"))}
+    ret.update(OVERWRITES.get("general", {}))
+    return ret
 
 
-def write_objs(page_obj=None, objs_to_get=None, fname="spells"):
+def write_objs(page_obj=None, objs_to_get=None, ignore_list=None):
     write_dict = {}
     for index, c in enumerate(objs_to_get):
-        spell = page_obj(c)
-        spell.parse()
-        write_dict[spell.name] = spell.to_dict()
+        page = page_obj(c)
+        page.parse()
+        write_dict[page.name] = page.to_dict(IGNORES.get(c, set()) | IGNORES.get("ALL"))
+        write_dict[page.name].update(OVERWRITES.get(c, {}))
         print("{}%".format(index / len(objs_to_get) * 100.0))
+    return write_dict
+
+
+def write_to_file(dict_obj, fname):
     f = open("{}.json".format(fname), "w")
-    f.write(json.dumps(write_dict))
+    f.write(json.dumps(dict_obj, indent=4, sort_keys=True))
     f.close()
 
 
 def main():
-    write_races()
-    # write_classes()
-    write_gen_feats()
-    # write_spells()
+    output = {}
+    # output.update(write_races())
+    output.update(write_classes())
+    output.update(write_gen_feats())
+    # output.update(write_spells())
+    write_to_file(output, "feats")
 
 
 

@@ -49,3 +49,21 @@ on(change_fields, function(eventInfo) {
         });
    });
 });
+
+//Level up stuff
+on("change:Level", function(values) {
+    //Casters
+
+    getAttrs(["Level", "class"], function(values) {
+        let level = values["Level"];
+        let sp_level=1;
+        let attrs_to_set ={};
+        for (sp_level=1; sp_level <= 9; sp_level++) {
+            let spell_name = "spell"+sp_level+"_maximum";
+            attrs_to_set[spell_name] = Math.max(0, Math.min(1, level-((sp_level-1)*2))) * 2 + Math.max(0, Math.min(1, (level-1)-((sp_level-1)*2)));
+
+        }
+        console.log(attrs_to_set);
+        setAttrs(attrs_to_set);
+    });
+});

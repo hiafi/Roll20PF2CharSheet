@@ -1,0 +1,86 @@
+<div class="sheet-2colrow">
+    <div class="sheet-col">
+        <div>
+            <table>
+                <tr class="table_header_details">
+                    <td></td>
+                    <td>Total</td>
+                    <td>Attr</td>
+                    <td>Prof</td>
+                    <td>Item</td>
+                    <td>Misc</td>
+                </tr>
+                <tr>
+                    <td class="skill_name">Spell Roll DC </td>
+                    <td><input class="skinny_number" type="number" name="attr_spells_dc_total" value="(@{spell_dc_attr} + @{spell_dc_prof} + @{spell_dc_item} + @{spell_dc_misc})" disabled="true" /></td>
+                    <td><select name="attr_spell_dc_attr" class="teml_text" >
+                        <option value="@{attr_Strength_mod}">STR</option>
+                        <option value="@{attr_Dexterity_mod}">DEX</option>
+                        <option value="@{attr_Constitution_mod}">CON</option>
+                        <option value="@{attr_Intelligence_mod}">INT</option>
+                        <option value="@{attr_Wisdom_mod}">WIS</option>
+                        <option value="@{attr_Charisma_mod}">CHA</option>
+                    </select></td>
+                     <td>
+                        <select class="teml_text" name="attr_spell_dc_prof">
+                            <option value="floor(@{level} / 2)">U</option>
+                            <option value="@{level}">T</option>
+                            <option value="@{level}+2">E</option>
+                            <option value="@{level}+4">M</option>
+                            <option value="@{level}+6">L</option>
+                        </select>
+                    </td>
+                    <td><input class="skinny_number" type="number" name="attr_spell_dc_item" value="0" /></td>
+                    <td><input class="skinny_number" type="number" name="attr_spell_dc_misc" value="0" /></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <table>
+                <tr class="table_header_details">
+                    <td></td>
+                    <td>Current</td>
+                    <td>Max</td>
+                </tr>
+                <tr>
+                    <td class="skill_name">Resonance</td>
+                    <td><input class="skinny_number" type="number" name="attr_powers_resonance_current" value="0"/></td>
+                    <td><input class="skinny_number" type="number" name="attr_powers_resonance_max" value="(@{Level} + @{attr_Charisma_mod})" disabled="true" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="sheet-col">
+        <div>
+            <table>
+                <tr class="table_header_details">
+                    <td></td>
+                    <td>Max</td>
+                    <td>Attr</td>
+                    <td>Feats</td>
+                    <td>Misc</td>
+                </tr>
+                <tr>
+                    <td class="skill_name">Spell Points Max</td>
+                    <td><input class="skinny_number" type="number" name="attr_powers_spell_points_max" value="(@{powers_spell_points_attr} + @{powers_spell_points_feats} + @{powers_spell_points_misc})" disabled="true" /></td>
+                    <td><select name="attr_powers_spell_points_attr" class="teml_text" >
+                        <option value="@{attr_Strength_mod}">STR</option>
+                        <option value="@{attr_Dexterity_mod}">DEX</option>
+                        <option value="@{attr_Constitution_mod}">CON</option>
+                        <option value="@{attr_Intelligence_mod}">INT</option>
+                        <option value="@{attr_Wisdom_mod}">WIS</option>
+                        <option value="@{attr_Charisma_mod}">CHA</option>
+                    </select></td>
+                    <td><input class="skinny_number" type="number" name="attr_powers_spell_points_feats" value="0"/></td>
+                    <td><input class="skinny_number" type="number" name="attr_powers_spell_points_misc" value="0"/></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td class="skill_name">Current</td>
+                    <td><td><input class="skinny_number" type="number" name="attr_powers_spell_points_current" value="0"/></td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

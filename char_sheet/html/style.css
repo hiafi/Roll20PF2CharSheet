@@ -36,6 +36,8 @@ h1 {
     height: 3em;
     width: 50%;
     text-align: center;
+    font-family: "Franklin Gothic Medium", sans-serif;
+    font-size: 0.8em;
 }
 
 .sheet-normal_hp_value {
@@ -46,6 +48,8 @@ h1 {
 .sheet-wide_hp {
     width: 100%;
     text-align: center;
+    font-family: "Franklin Gothic Medium", sans-serif;
+    font-size: 0.8em;
 }
 
 .sheet-wide_hp_value {
@@ -68,13 +72,10 @@ h1 {
     display: inline;
 }
 
-.sheet-spell_details {
-    vertical-align: top !important;
-    margin-top: 1.5em;
-}
-
 .sheet-skill_name {
-    width: 6.5em;
+    font-family: "Franklin Gothic Medium", sans-serif;
+    font-size: 1.0em;
+    width: 8.0em;
 }
 
 .sheet-hp_column {
@@ -127,45 +128,45 @@ input.sheet-tab + span::before {
     border: solid 1px #a8a8a8;
     text-align: center;
     display: inline-block;
-    background: #fff;
-    background: linear-gradient(to top, #c8c8c8, #fff, #c8c8c8);
     width: 150px;
     height: 20px;
     font-size: 18px;
     position: absolute;
-    left: 30px;
+    left: 35px;
 }
 
 input.sheet-tab:checked + span::before {
-    background: #dcdcdc;
-    background: linear-gradient(to top, #fcfcfc, #dcdcdc, #fcfcfc);
+    background: #faa;
     border-bottom-color: #fff;
 }
 
 input.sheet-tab:not(:first-child) + span::before { border-left: none; }
 
 input.sheet-tab-feats + span::before {
-    background: #fee;
-    background: linear-gradient(to top, #f8c8c8, #fee, #f8c8c8);
-    left: 163px;
+
+    left: 185px;
 }
 
 input.sheet-tab-feats:checked + span::before {
-    background: #dcdcdc;
-    background: linear-gradient(to top, #fcecec, #f8c8c8, #fcecec);
+    background: #faa;
     border-bottom-color: #fcecec;
 }
 
 input.sheet-tab-powers + span::before {
-    background: #deeafc;
-    background: linear-gradient(to top, #afbff8, #deeafc, #afbff8);
-    left: 163px;
+
+    left: 185px;
 }
 
 input.sheet-tab-powers:checked + span::before {
-    background: #deeafc;
-    background: linear-gradient(to top, #deeafc, #afbff8, #deeafc);
-    border-bottom-color: #deeafc;
+    background: #faa;
+}
+
+input.sheet-tab-equipment:checked + span::before {
+    background: #faa;
+}
+
+input.sheet-char-config:checked + span::before {
+    background: #faa;
 }
 
 
@@ -175,20 +176,20 @@ div.sheet-tab-content {
     padding: 5px;
 }
 
-div.sheet-tab-main { background-color: #ffffe6; }
+div.sheet-tab-main { }
 
-div.sheet-tab-feats { background-color: #fcecec; }
+div.sheet-tab-feats { }
 
-div.sheet-tab-powers { background-color: #deeafc; }
+div.sheet-tab-powers { }
 
 div.sheet-tab-char-config { }
 
 
-input.sheet-tab-powers + span::before { left: 313px; }
+input.sheet-tab-powers + span::before { left: 335px; }
 
-input.sheet-tab-equipment + span::before { left: 463px; }
+input.sheet-tab-equipment + span::before { left: 485px; }
 
-input.sheet-tab-char-config + span::before { left: 613px; }
+input.sheet-tab-char-config + span::before { left: 635px; }
 
 .sheet-block-a,
 .sheet-block-switch:checked ~ .sheet-block-b {
@@ -208,4 +209,46 @@ input::-webkit-inner-spin-button {
 
 input[type="number"] {
     -moz-appearance: textfield;
+}
+
+.sheet-config_checkbox_icon {
+    position: absolute;
+    white-space: nowrap;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    font-family: pictos;
+    cursor: pointer;
+}
+
+.sheet-config_checkbox {
+    vertical-align: top !important;
+    opacity: 0;
+    position: absolute;
+    width: 16px;
+    min-height: 16px;
+    z-index: 2;
+}
+
+.sheet-spell_config_checkbox {
+    margin-top: 15px;
+}
+
+.sheet-button_text {
+    text-decoration: none;
+    background: 0 0;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+button[type=roll].sheet-button_text::before { content: ''; }
+
+.sheet-button_text_font {
+    font-family: "Franklin Gothic Medium", sans-serif;
+    font-size: 0.8em;
+}
+
+.sheet-inventory_table {
+    float: left;
 }

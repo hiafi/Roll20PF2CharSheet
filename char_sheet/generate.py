@@ -101,7 +101,8 @@ def gen_first_tab():
 def gen_powers_tab():
     template = env.get_template('tab_powers_tab.html')
     return template.render({
-
+        "powers_section": gen_powers(),
+        "magic_header": gen_magic_header(),
     })
 
 
@@ -138,6 +139,16 @@ def gen_attribute_options():
 
 def gen_scripts():
     template = env.get_template('scripts.js')
+    return template.render({})
+
+
+def gen_powers():
+    template = env.get_template('powers_section.html')
+    return template.render({})
+
+
+def gen_magic_header():
+    template = env.get_template('magic_header.html')
     return template.render({})
 
 

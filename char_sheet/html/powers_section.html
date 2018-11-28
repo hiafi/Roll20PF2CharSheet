@@ -1,0 +1,12 @@
+<h1>Powers</h1>
+
+<fieldset class="repeating_powers">
+    <input type="text" class="ability_name" name="attr_powername" />
+    {% raw %}<button type="roll" value="&{template:action} {{name=@{powername}}} {{text=@{powertext}}} {{actions=@{poweractions}}} " ></button>{% endraw %}
+    <input type="checkbox" class="sheet-block-switch config_checkbox"> <span class="config_checkbox_icon">y</span>
+    <div class="sheet-block-b">
+        <span>Cost: </span><input type="number" name="attr_powercost" />
+        <span>Actions </span><input type="text" name="attr_poweractions" />
+        <textarea name="attr_powertext"></textarea>
+    </div>
+</fieldset>

@@ -1,7 +1,9 @@
 <fieldset class="repeating_attacks">
     <td><input type="text" name="attr_attackname" class="small_name_width" /></td>
-    <td>{% raw %}<button type="roll" value="&{template:attack} {{name=@{attackname}}} {{attack=[[(1d20 + @{attacktotal})]]}} {{damage=[[@{attack_dmg_dice}+@{attack_dmg_attr}+@{attack_dmg_item}+@{attack_dmg_misc}]]}} {{actions=@{attack_actions}}} " ></button>{% endraw %}</td>
-    <input type="checkbox" class="sheet-block-switch spell_details">
+    <td>{% raw %}<button class="button_text" type="roll" value="&{template:attack} {{name=@{attackname}}} {{attack=[[(1d20 + @{attacktotal})]]}} {{damage=[[@{attack_dmg_dice}+@{attack_dmg_attr}+@{attack_dmg_item}+@{attack_dmg_misc}]]}} {{actions=@{attack_actions}}} " ><span class="button_text_font">1st Attack</span></button>{% endraw %}</td>
+    <td>{% raw %}<button class="button_text" type="roll" value="&{template:attack} {{name=@{attackname}}} {{attack=[[(1d20 + @{attacktotal} + @{multi_attack})]]}} {{damage=[[@{attack_dmg_dice}+@{attack_dmg_attr}+@{attack_dmg_item}+@{attack_dmg_misc}]]}} {{actions=@{attack_actions}}} " ><span class="button_text_font">2nd Attack</span></button>{% endraw %}</td>
+    <td>{% raw %}<button class="button_text" type="roll" value="&{template:attack} {{name=@{attackname}}} {{attack=[[(1d20 + @{attacktotal} + @{multi_attack} * 2)]]}} {{damage=[[@{attack_dmg_dice}+@{attack_dmg_attr}+@{attack_dmg_item}+@{attack_dmg_misc}]]}} {{actions=@{attack_actions}}} " ><span class="button_text_font">3rd Attack</span></button>{% endraw %}</td>
+    <input type="checkbox" class="sheet-block-switch config_checkbox"> <span class="config_checkbox_icon">y</span>
     <div class="sheet-block-b">
         <table>
             <tr class="table_header_details">
@@ -10,6 +12,7 @@
                 <td>Attack Prof</td>
                 <td>Attack Item</td>
                 <td>Attack Misc</td>
+                <td>Multiple Attacks</td>
             </tr>
             <tr>
                 <td><input class="skinny_number" type="number" name="attr_attacktotal" value="@{attackattr} + @{attackprof} + @{attackitem} + @{attackmisc}" disabled="true" /></td>
@@ -32,6 +35,7 @@
                 </td>
                 <td><input class="skinny_number" type="number" name="attr_attackitem" value="0" /></td>
                 <td><input class="skinny_number" type="number" name="attr_attackmisc" value="0" /></td>
+                <td><input class="skinny_number" type="number" name="attr_multi_attack" value="-5" /></td>
             </tr>
         </table>
         <table>
