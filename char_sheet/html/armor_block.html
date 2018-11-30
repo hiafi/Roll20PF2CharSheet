@@ -11,7 +11,7 @@
     </tr>
     <tr>
         <td class="skill_name">AC</td>
-        <td>{% raw %}<button type="roll" value="&{template:skill} {{name=AC}} {{value=[[(1d20 + @{AC} - 10)]]}}" ></button>{% endraw %}</td>
+        <td>{% raw %}<button type="roll" value="&{template:skill} {{character=@{character_name}}}} {{name=AC}} {{value=[[(1d20 + @{AC} - 10)]]}}" ></button>{% endraw %}</td>
         <td><input class="skinny_number" type="number" name="attr_AC" value="(10 + (((@{attr_Dexterity_mod} + @{def_AC_max_dex_bonus}) - abs(@{attr_Dexterity_mod} - @{def_AC_max_dex_bonus})) / 2) + @{def_AC_prof} + @{def_AC_item} + @{def_AC_misc})" disabled="true" /></td>
         <td><input class="skinny_number" type="number" name="attr_def_AC_attr" value="(((@{attr_Dexterity_mod} + @{def_AC_max_dex_bonus}) - abs(@{attr_Dexterity_mod} - @{def_AC_max_dex_bonus})) / 2)"  disabled="true" /></td>
         <td>{{ ac_prof|safe }}</td>
@@ -21,7 +21,7 @@
     </tr>
     <tr>
         <td class="skill_name">Touch AC</td>
-        <td>{% raw %}<button type="roll" value="&{template:skill} {{name=Touch AC}} {{value=[[(1d20 + @{tAC} - 10)]]}}" ></button>{% endraw %}</td>
+        <td>{% raw %}<button type="roll" value="&{template:skill} {{character=@{character_name}}} {{name=Touch AC}} {{value=[[(1d20 + @{tAC} - 10)]]}}" ></button>{% endraw %}</td>
         <td><input class="skinny_number" type="number" name="attr_tAC" value="(10 + (((@{attr_Dexterity_mod} + @{def_tAC_max_dex_bonus}) - abs(@{attr_Dexterity_mod} - @{def_tAC_max_dex_bonus})) / 2) + @{def_tAC_prof} + @{def_tAC_item} + @{def_tAC_misc})" disabled="true" /></td>
         <td><input class="skinny_number" type="number" name="attr_def_AC_attr" value="(((@{attr_Dexterity_mod} + @{def_tAC_max_dex_bonus}) - abs(@{attr_Dexterity_mod} - @{def_tAC_max_dex_bonus})) / 2)"  disabled="true" /></td>
         <td>{{ tac_prof|safe }}</td>
@@ -44,7 +44,7 @@
     {% for defense, attr in defenses %}
     <tr>
         <td class="skill_name">{{defense}}: </td>
-        <td>{% raw %}<button type="roll" value="&{template:skill} {{name={%endraw%}{{defense}}{%raw%} Save}} {{value=[[(@{{%endraw%}{{defense}}{%raw%}})]]}}" ></button>{% endraw %}</td>
+        <td>{% raw %}<button type="roll" value="&{template:skill} {{character=@{character_name}} {{name={%endraw%}{{defense}}{%raw%} Save}} {{value=[[(@{{%endraw%}{{defense}}{%raw%}})]]}}" ></button>{% endraw %}</td>
         <td><input class="skinny_number" type="number" name="attr_{{defense}}" value="(@{Level} + @{def_{{defense}}_attr} + @{def_{{defense}}_prof} + @{def_{{defense}}_item} + @{def_{{defense}}_misc})" disabled="true" /></td>
         <td><input class="skinny_number" type="number" name="attr_def_{{defense}}_attr" value="@{attr_{{attr}}_mod}" disabled="true" /></td>
         <td>

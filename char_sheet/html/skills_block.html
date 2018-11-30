@@ -15,7 +15,7 @@
     <tr>
         {% if skill %}
             <td class="skill_name">{{skill}}</td>
-            <td>{% raw %}<button type="roll" value="&{template:skill} {{name={%endraw%}{{skill}}{%raw%}}} {{value=[[1d20 + (@{skill_{%endraw%}{{skill}}{%raw%}_total})]]}} " ></button>{% endraw %}</td>
+            <td>{% raw %}<button type="roll" value="&{template:skill} {{character=@{character_name}}} {{name={%endraw%}{{skill}}{%raw%}}} {{value=[[1d20 + (@{skill_{%endraw%}{{skill}}{%raw%}_total})]]}} " ></button>{% endraw %}</td>
             <td><input class="skinny_number" type="number" name="attr_skill_{{skill}}_total" value="(@{attr_{{attr}}_mod} + @{skill_{{skill}}_prof} + @{skill_{{skill}}_item} + @{skill_{{skill}}_misc} + @{skill_{{skill}}_armor})" disabled="true" /></td>
             <td><input type="checkbox" name="attr_skill_{{skill}}_sig" /></td>
             <td><input class="skinny_number" type="number" name="attr_skill_{{skill}}_attr" value="(@{attr_{{attr}}_mod})" disabled="true"  /></td>

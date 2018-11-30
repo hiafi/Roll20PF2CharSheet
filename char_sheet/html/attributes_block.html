@@ -8,10 +8,11 @@
     {% for attr in attributes %}
 
     <tr>
-    <td class="skill_name">{{attr}}</td>
-    <td><input class="skinny_number" type="number" name="attr_attr_{{attr}}_mod" value="(floor((@{attr_{{attr}}_value} - 10)/2))" disabled="true" /></td>
-    <td><input class="skinny_number" type="number" name="attr_attr_{{attr}}_value" value="10" /></td>
-    <td><input class="skinny_number" type="number" name="attr_attr_{{attr}}_penalty" value="0" /></td>
+        <td class="skill_name">{{attr}}</td>
+        <td>{% raw %}<button type="roll" value="&{template:skill} {{character=@{character_name}}} {{name={%endraw%}{{attr}}{%raw%}}} {{value=[[1d20 + (@{attr_{%endraw%}{{attr}}{%raw%}_mod})]]}} " ></button>{% endraw %}</td>
+        <td><input class="skinny_number" type="number" name="attr_attr_{{attr}}_mod" value="(floor((@{attr_{{attr}}_value} - 10)/2))" disabled="true" /></td>
+        <td><input class="skinny_number" type="number" name="attr_attr_{{attr}}_value" value="10" /></td>
+        <td><input class="skinny_number" type="number" name="attr_attr_{{attr}}_penalty" value="0" /></td>
     </tr>
     <input type="text" name="attr_{{attr}}_min" value="0" hidden="true" />
     {% endfor %}

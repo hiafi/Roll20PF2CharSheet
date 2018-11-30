@@ -1,25 +1,45 @@
 
 {% raw %}
 <rolltemplate class="sheet-rolltemplate-action">
-    <table>
-      <tr><th>{{name}} {{actions}}</th></tr>
-        <tr><td>{{text}}</td></tr>
-    </table>
+    <div class="template_action_box">
+        <div class="template_action_header">{{ character }}</div>
+        <div class="template_action_header">{{ name }}</div>
+        <div class="template_action_actions">{{ actions }}</div>
+        <div>{{ text }}</div>
+    </div>
 </rolltemplate>
 
 <rolltemplate class="sheet-rolltemplate-skill">
-    <table>
-      <tr><th>{{name}}</th></tr>
-        <tr><td>{{value}}</td></tr>
-    </table>
+    <div class="template_skill_box">
+        <div class="template_skill_header">{{ character }}</div>
+        <div class="template_skill_header">{{ name }}</div>
+        <div class="template_skill_value">{{value}}</div>
+    </div>
 </rolltemplate>
 
 <rolltemplate class="sheet-rolltemplate-attack">
-    <table>
-      <tr><th>{{name}}</th><th></th></tr>
-        <tr><td>{{actions}}</td></tr>
-        <tr><td>Attack: </td><td>{{attack}}</td></tr>
-        <tr><td>Damage: </td><td>{{damage}}</td></tr>
-    </table>
+    <div class="template_attack_box">
+        <div class="template_attack_header">{{ character }}</div>
+        <div class="template_attack_header">{{ name }}</div>
+        <div class="template_attack_actions">{{ actions }}</div>
+        <table>
+            <tr>
+                <td class="attack_row">Attack: </td><td class="attack_row">{{attack}}</td>
+            </tr>
+            <tr>
+                <td class="attack_row">Damage: </td><td class="attack_row">{{damage}}</td>
+            </tr>
+        </table>
+    </div>
+</rolltemplate>
+
+<rolltemplate class="sheet-rolltemplate-spell">
+    <div class="template_spell_box">
+        <div class="template_spell_header">{{ character }}</div>
+        <div class="template_spell_header">{{ name }}</div>
+        <div class="template_spell_actions">{{ actions }}</div>
+        <div>{{ text }}</div>
+        <div>{{ hightened }}</div>
+    </div>
 </rolltemplate>
 {% endraw %}

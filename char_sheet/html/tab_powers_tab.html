@@ -4,14 +4,11 @@
     <div class='sheet-3colrow'>
 
 
-        {% for grouping in [["Powers", "Cantrips", 1, 2], [3, 4, 5], [6, 7, 8, 9, 10]] %}
+        {% for grouping in [["Cantrips", 1, 4, 7], ["Powers", 2, 5, 8, 10], ["Magic Items", 3, 6, 9]] %}
         <div class='sheet-col'>
             {% for level in grouping %}
-            {% if level=="Powers" %}
-                {{ powers_section|safe }}
-            {% else %}
-                <h1>{% if level!="Cantrips" %}Level {% endif %}{{level}}</h1>
-                {% if level != "Cantrips" %}
+                <h1 class="spell_section_title">{% if level != "Cantrips" and level != "Powers" and level != "Magic Items" %}Level {% endif %}{{level}}</h1>
+                {% if level != "Cantrips" and level != "Powers" and level != "Magic Items" %}
                 <div>
                     <table>
                         <tr class="table_header_details">
@@ -32,17 +29,27 @@
                             <tr>
                                 <td><input type="checkbox" name="attr_spellprep" /></td>
                                 <td><input class="ability_name" type="text" name="attr_spellname" /></td>
-                                <td>{% raw %}<button type="roll" value="&{template:action} {{name=@{spellname}}} {{text=@{spelltext}}} {{actions=(A)}} " ></button>{% endraw %}</td>
+                                <td>{% raw %}<button type="roll" value="&{template:spell} {{character=@{character_name}}} {{name=@{spellname}}} {{text=@{spelltext}}} {{hightened=@{spellhighten}}} {{actions=e}} " ></button>{% endraw %}</td>
                             </tr>
                         </table>
                         <input type="checkbox" class="sheet-block-switch config_checkbox spell_config_checkbox"> <span class="config_checkbox_icon spell_config_checkbox">y</span>
                         <div class="sheet-block-b">
-
+                            {% if level != "Magic Items" %}
                             <div>
-                                <span>V:</span><input type="checkbox" name="attr_spellverbal" />
-                                <span>S:</span><input type="checkbox" name="attr_spellsometic" />
-                                <span>M:</span><input type="checkbox" name="attr_spellmaterial" />
-                                <span>Reaction:</span><input type="checkbox" name="attr_spellreaction" />
+                                <table>
+                                    <tr class="table_header_details">
+                                        <td>Verbal</td>
+                                        <td>Somatic</td>
+                                        <td>Material</td>
+                                        <td>Reaction</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="attr_spellverbal" /></td>
+                                        <td><input type="checkbox" name="attr_spellsomatic" /></td>
+                                        <td><input type="checkbox" name="attr_spellmaterial" /></td>
+                                        <td><input type="checkbox" name="attr_spellreaction" /></td>
+                                    </tr>
+                                </table>
                             </div>
                             <div>
                                 <table>
@@ -66,15 +73,19 @@
                                     <tr><td><input type="text" name="attr_spellduration" /></td></tr>
                                 </table>
                             </div>
+                            {% endif %}
                             <textarea name="attr_spelltext"></textarea>
+                            {% if level != "Magic Items" %}
                             <div>
                                 <div>Hightened Effects:</div>
                                 <textarea name="attr_spellhighten"></textarea>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
+
                 </fieldset>
-            {% endif %}
+                <hr />
             {% endfor %}
         </div>
         {% endfor %}

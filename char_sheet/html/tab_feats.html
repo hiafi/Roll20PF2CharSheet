@@ -4,40 +4,46 @@
             <h1>Ancestry Feats</h1>
             <fieldset class="repeating_racials">
                 <input type="text" class="ability_name" name="attr_racialskillname" />
-                {% raw %}<button type="roll" value="&{template:action} {{name=@{racialskillname}}} {{text=@{racialskilltext}}} {{actions=@{racialskillactions}}} " ></button>{% endraw %}
+                {% raw %}<button type="roll" value="&{template:action} {{character=@{character_name}}} {{name=@{racialskillname}}} {{text=@{racialskilltext}}} {{actions=@{racialskillactions}}} " ></button>{% endraw %}
                 <input type="checkbox" class="sheet-block-switch config_checkbox"> <span class="config_checkbox_icon">y</span>
                 <div class="sheet-block-b">
-                    <span>Actions </span><input type="text" name="attr_racialskillactions" />
+                    <span>Actions </span>
+                    <select name="attr_racialskillactions" class="action_select" >
+                        {{ action_options|safe }}
+                    </select>
                     <textarea name="attr_racialskilltext"></textarea>
                 </div>
             </fieldset>
-
+        </div>
+        <div class='sheet-col'>
             <h1>Skill Feats</h1>
             <fieldset class="repeating_skillfeats">
                 <input type="text" class="ability_name" name="attr_skillname" />
-                {% raw %}<button type="roll" value="&{template:action} {{name=@{skillname}}} {{text=@{skilltext}}} {{actions=@{skillactions}}} " ></button>{% endraw %}
+                {% raw %}<button type="roll" value="&{template:action} {{character=@{character_name}}} {{name=@{skillname}}} {{text=@{skilltext}}} {{actions=@{skillactions}}} " ></button>{% endraw %}
                 <input type="checkbox" class="sheet-block-switch config_checkbox"> <span class="config_checkbox_icon">y</span>
                 <div class="sheet-block-b">
-                    <span>Actions </span><input type="text" name="attr_skillactions" />
+                    <span>Actions </span>
+                    <select name="attr_skillactions" class="action_select" >
+                        {{ action_options|safe }}
+                    </select>
                     <textarea name="attr_skilltext"></textarea>
                 </div>
             </fieldset>
-
         </div>
         <div class='sheet-col'>
             <h1>Class Feats</h1>
             <fieldset class="repeating_classfeats">
                 <input type="text" class="ability_name" name="attr_classfeatname" />
-                {% raw %}<button type="roll" value="&{template:action} {{name=@{classfeatname}}} {{text=@{classfeattext}}} {{actions=@{classfeatactions}}} " ></button>{% endraw %}
+                {% raw %}<button type="roll" value="&{template:action} {{character=@{character_name}}} {{name=@{classfeatname}}} {{text=@{classfeattext}}} {{actions=@{classfeatactions}}} " ></button>{% endraw %}
                 <input type="checkbox" class="sheet-block-switch config_checkbox"> <span class="config_checkbox_icon">y</span>
                 <div class="sheet-block-b">
-                    <span>Actions </span><input type="text" name="attr_classfeatactions" />
+                    <span>Actions </span>
+                    <select name="attr_classfeatactions" class="action_select" >
+                        {{ action_options|safe }}
+                    </select>
                     <textarea name="attr_classfeattext"></textarea>
                 </div>
             </fieldset>
-        </div>
-        <div class='sheet-col'>
-
         </div>
     </div>
 </div>

@@ -2,6 +2,10 @@ h1 {
     color: #800000;
 }
 
+.sheet-spell_section_title {
+    text-align: center;
+}
+
 .sheet-skinny_number {
     width: 2.5em !important;
     text-align: center;
@@ -78,6 +82,10 @@ h1 {
     width: 8.0em;
 }
 
+.sheet-action_select {
+    width: 4.0em;
+}
+
 .sheet-hp_column {
     width: 50%;
     padding: 0.1em;
@@ -103,7 +111,171 @@ td.sheet-table_header_details {
     width: 20em;
 }
 
-div.sheet-tab-content { display: none; }
+.sheet-config_checkbox_icon {
+    position: absolute;
+    white-space: nowrap;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    font-family: pictos;
+    cursor: pointer;
+}
+
+.sheet-config_checkbox {
+    vertical-align: top !important;
+    opacity: 0;
+    position: absolute;
+    width: 16px;
+    min-height: 16px;
+    z-index: 2;
+}
+
+.sheet-spell_config_checkbox {
+    margin-top: 15px;
+}
+
+.sheet-inventory_checkbox_pos {
+    top: 10px;
+    left: 280px;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+}
+
+.sheet-inventory_config_checkbox {
+    vertical-align: top !important;
+    opacity: 0;
+    position: absolute;
+    min-height: 16px;
+    z-index: 2;
+
+}
+
+.sheet-inventory_config_icon {
+    white-space: nowrap;
+    font-size: 16px;
+    font-family: pictos;
+    cursor: pointer;
+
+}
+
+.sheet-button_text {
+    text-decoration: none;
+    background: 0 0;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+.sheet-rolltemplate-attack .sheet-template_attack_box {
+    border: solid 1px #000000;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.sheet-rolltemplate-action .sheet-template_action_box {
+    border: solid 1px #000000;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.sheet-rolltemplate-skill .sheet-template_skill_box {
+    border: solid 1px #000000;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.sheet-rolltemplate-spell .sheet-template_spell_box {
+    border: solid 1px #000000;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.sheet-rolltemplate-action .sheet-template_action_header {
+    background-color: #660080;
+    color: #ffffff;
+    width: 100%;
+    font-size: 1.2em;
+    font-family: "Franklin Gothic Medium", sans-serif;
+    text-align: center;
+}
+
+.sheet-rolltemplate-action .sheet-template_action_actions {
+    background-color: #660080;
+    color: #ffffff;
+    font-size: 0.7em;
+    font-family: pictos;
+    text-align: center;
+}
+
+.sheet-rolltemplate-spell .sheet-template_spell_header {
+    background-color: #660080;
+    color: #ffffff;
+    width: 100%;
+    font-size: 1.2em;
+    font-family: "Franklin Gothic Medium", sans-serif;
+    text-align: center;
+}
+
+.sheet-rolltemplate-spell .sheet-template_spell_actions {
+    background-color: #660080;
+    color: #ffffff;
+    font-size: 0.7em;
+    font-family: "Franklin Gothic Medium", sans-serif;
+    text-align: center;
+}
+
+.sheet-rolltemplate-skill .sheet-template_skill_header {
+    background-color: #077000;
+    color: #ffffff;
+    width: 100%;
+    font-size: 1.2em;
+    font-family: "Franklin Gothic Medium", sans-serif;
+    text-align: center;
+}
+
+
+.sheet-rolltemplate-skill .sheet-template_skill_value {
+    width: 100%;
+    text-align: center;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.sheet-rolltemplate-attack .sheet-template_attack_header {
+    background-color: #800000;
+    color: #ffffff;
+    width: 100%;
+    font-size: 1.2em;
+    font-family: "Franklin Gothic Medium", sans-serif;
+    text-align: center;
+}
+
+.sheet-rolltemplate-attack .sheet-template_attack_actions {
+    background-color: #800000;
+    color: #ffffff;
+    font-size: 0.7em;
+    font-family: pictos;
+    text-align: center;
+}
+
+.sheet-rolltemplate-attack .sheet-attack_row {
+    padding: 0.2em;
+}
+
+button[type=roll].sheet-button_text::before { content: ''; }
+
+.sheet-button_text_font {
+    font-family: "Franklin Gothic Medium", sans-serif;
+    font-size: 0.8em;
+}
+
+.sheet-inventory_table {
+
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
 
 input.sheet-tab-main:checked ~ div.sheet-tab-main,
 input.sheet-tab-feats:checked ~ div.sheet-tab-feats,
@@ -170,6 +342,11 @@ input.sheet-char-config:checked + span::before {
 }
 
 
+div.sheet-tab-content { display: none; }
+
+
+
+
 div.sheet-tab-content {
     border: 1px solid #a8a8a8;
     margin: 2px 0 0 5px;
@@ -205,50 +382,4 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-input[type="number"] {
-    -moz-appearance: textfield;
-}
-
-.sheet-config_checkbox_icon {
-    position: absolute;
-    white-space: nowrap;
-    width: 16px;
-    height: 16px;
-    font-size: 16px;
-    font-family: pictos;
-    cursor: pointer;
-}
-
-.sheet-config_checkbox {
-    vertical-align: top !important;
-    opacity: 0;
-    position: absolute;
-    width: 16px;
-    min-height: 16px;
-    z-index: 2;
-}
-
-.sheet-spell_config_checkbox {
-    margin-top: 15px;
-}
-
-.sheet-button_text {
-    text-decoration: none;
-    background: 0 0;
-    border: none;
-    box-shadow: none;
-    text-shadow: none;
-}
-
-button[type=roll].sheet-button_text::before { content: ''; }
-
-.sheet-button_text_font {
-    font-family: "Franklin Gothic Medium", sans-serif;
-    font-size: 0.8em;
-}
-
-.sheet-inventory_table {
-    float: left;
 }

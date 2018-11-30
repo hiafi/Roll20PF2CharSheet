@@ -35,24 +35,25 @@
 
         <div class='sheet-col'>
             <h1>Inventory</h1>
-            <fieldset class="inventory">
+            <fieldset class="repeating_inventory">
+                <div>
+                    <table class="inventory_table">
+                        <tr class="table_header_details">
+                            <td></td>
+                            <td>Quantity</td>
+                            <td>Bulk</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="attr_inventory_name" /></td>
+                            <td><input class="skinny_number" type="number" name="attr_inventory_qty" value="1" /></td>
+                            <td><input class="skinny_number" type="text" name="attr_inventory_bulk" value="0" /></td>
+                        </tr>
+                    </table>
+                    <input type="checkbox" class="sheet-block-switch config_checkbox inventory_config_checkbox inventory_checkbox_pos"> <span class="config_checkbox_icon inventory_config_icon inventory_checkbox_pos">y</span>
 
-                <table class="inventory_table">
-                    <tr class="table_header_details">
-                        <td></td>
-                        <td>Quantity</td>
-                        <td>Bulk</td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="attr_inventory_name" /></td>
-                        <td><input class="skinny_number" type="number" name="attr_inventory_qty" value="1" /></td>
-                        <td><input class="skinny_number" type="text" name="attr_inventory_bulk" value="0" /></td>
-                    </tr>
-                </table>
-                <input type="checkbox" class="sheet-block-switch config_checkbox spell_config_checkbox"> <span class="config_checkbox_icon spell_config_checkbox">y</span>
-
-                <div class="sheet-block-b">
-                    <textarea name="attr_inventory_description"></textarea>
+                    <div class="sheet-block-b">
+                        <textarea name="attr_inventory_description"></textarea>
+                    </div>
                 </div>
             </fieldset>
         </div>

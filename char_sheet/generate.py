@@ -84,7 +84,7 @@ def gen_skills_block():
 
 def gen_attack_block():
     template = env.get_template('attacks_block.html')
-    return template.render({})
+    return template.render({"action_options": gen_action_options()})
 
 
 def gen_first_tab():
@@ -109,7 +109,7 @@ def gen_powers_tab():
 def gen_feats_tab():
     template = env.get_template('tab_feats.html')
     return template.render({
-
+        "action_options": gen_action_options()
     })
 
 
@@ -149,6 +149,11 @@ def gen_powers():
 
 def gen_magic_header():
     template = env.get_template('magic_header.html')
+    return template.render({})
+
+
+def gen_action_options():
+    template = env.get_template('action_options.html')
     return template.render({})
 
 
