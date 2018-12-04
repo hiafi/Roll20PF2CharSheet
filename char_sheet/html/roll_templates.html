@@ -5,7 +5,7 @@
         <div class="template_action_header">{{ character }}</div>
         <div class="template_action_header">{{ name }}</div>
         <div class="template_action_actions">{{ actions }}</div>
-        <div>{{ text }}</div>
+        <div class="template_action_main_text">{{ text }}</div>
     </div>
 </rolltemplate>
 
@@ -13,7 +13,7 @@
     <div class="template_skill_box">
         <div class="template_skill_header">{{ character }}</div>
         <div class="template_skill_header">{{ name }}</div>
-        <div class="template_skill_value">{{value}}</div>
+        <div class="template_skill_value">{{ value }}</div>
     </div>
 </rolltemplate>
 
@@ -30,6 +30,7 @@
                 <td class="attack_row">Damage: </td><td class="attack_row">{{damage}}</td>
             </tr>
         </table>
+        <div>{{text}}</div>
     </div>
 </rolltemplate>
 
@@ -37,9 +38,25 @@
     <div class="template_spell_box">
         <div class="template_spell_header">{{ character }}</div>
         <div class="template_spell_header">{{ name }}</div>
-        <div class="template_spell_actions">{{ actions }}</div>
-        <div>{{ text }}</div>
-        <div>{{ hightened }}</div>
+        <div class="template_spell_actions">
+            {{#rollGreater() verbal 0}}<span> V </span>{{/rollGreater() verbal 0}}
+            {{#rollGreater() somatic 0}}<span> S </span>{{/rollGreater() somatic 0}}
+            {{#rollGreater() material 0}}<span> M </span>{{/rollGreater() material 0}}
+        </div>
+        {{#rollGreater() reaction 0}}<div class="template_spell_actions_icon">1</div>{{/rollGreater() reaction 0}}
+
+        {{#range}}<div class="template_spell_props"><b>Range</b>: {{ range }}</div>{{/range}}
+        {{#area}}<div class="template_spell_props"><b>Area</b>: {{ area }}</div>{{/area}}
+        {{#duration}}<div class="template_spell_props"><b>Duration</b>: {{ duration }}</div>{{/duration}}
+        <hr class="template_hr" />
+        <div class="template_spell_main_text">{{ text }}</div>
+        <div class="template_spell_heighten">{{ heightened }}</div>
+        <hr class="template_hr" />
+        {{#critsuccess}}<div class="template_spell_saves_title">Critical Success</div><div class="template_spell_saves"> {{ critsuccess }}</div>{{/critsuccess}}
+        {{#success}}<div class="template_spell_saves_title">Success</div><div class="template_spell_saves"> {{ success }}</div>{{/success}}
+        {{#fail}}<div class="template_spell_saves_title">Failure</div><div class="template_spell_saves"> {{ fail }}</div>{{/fail}}
+        {{#critfail}}<div class="template_spell_saves_title">Critical Failure</div><div class="template_spell_saves">{{ critfail }}</div>{{/critfail}}
+
     </div>
 </rolltemplate>
 {% endraw %}

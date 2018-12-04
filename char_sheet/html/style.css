@@ -207,6 +207,12 @@ td.sheet-table_header_details {
     text-align: center;
 }
 
+.sheet-rolltemplate-action .sheet-template_action_main_text {
+    text-align: center;
+    font-size: 1.0em;
+}
+
+
 .sheet-rolltemplate-spell .sheet-template_spell_header {
     background-color: #660080;
     color: #ffffff;
@@ -222,6 +228,50 @@ td.sheet-table_header_details {
     font-size: 0.7em;
     font-family: "Franklin Gothic Medium", sans-serif;
     text-align: center;
+}
+
+.sheet-rolltemplate-spell .sheet-template_spell_actions_icon {
+    background-color: #660080;
+    color: #ffffff;
+    font-size: 0.7em;
+    font-family: pictos;
+    text-align: center;
+}
+
+.sheet-rolltemplate-spell .sheet-template_spell_main_text {
+    text-align: center;
+    font-size: 1.0em;
+}
+
+.sheet-rolltemplate-spell .sheet-template_spell_props {
+    text-align: center;
+    font-size: 0.8em;
+    font-family: "Franklin Gothic Medium", sans-serif;
+}
+
+.sheet-rolltemplate-spell .sheet-template_hr {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.sheet-rolltemplate-spell .sheet-template_spell_saves {
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.sheet-rolltemplate-spell .sheet-template_spell_saves_title {
+    padding-top: 0.3em;
+    text-align: center;
+    font-size: 0.7em;
+    height: 1.2em;
+    color: #777777;
+    font-family: "Franklin Gothic Medium", sans-serif;
+}
+
+.sheet-rolltemplate-spell .sheet-template_spell_heighten {
+    padding-top: 0.6em;
+    text-align: center;
+    font-size: 0.85em;
 }
 
 .sheet-rolltemplate-skill .sheet-template_skill_header {

@@ -29,12 +29,15 @@
                             <tr>
                                 <td><input type="checkbox" name="attr_spellprep" /></td>
                                 <td><input class="ability_name" type="text" name="attr_spellname" /></td>
-                                <td>{% raw %}<button type="roll" value="&{template:spell} {{character=@{character_name}}} {{name=@{spellname}}} {{text=@{spelltext}}} {{hightened=@{spellhighten}}} {{actions=e}} " ></button>{% endraw %}</td>
+                                <td>{% raw %}
+                                    <button type="roll" value="&{template:spell} {{character=@{character_name}}} {{name=@{spellname}}} {{text=@{spelltext}}} {{verbal=[[@{spellverbal}]]}} {{somatic=[[@{spellsomatic}]]}} {{material=[[@{spellmaterial}]]}} {{reaction=[[@{spellreaction}]]}} {{range=@{spellrange}}} {{area=@{spellarea}}} {{duration=@{spellduration}}} {{critsuccess=@{spellcritsuccess}}} {{success=@{spellsuccess}}} {{fail=@{spellfail}}} {{critfail=@{spellcritfail}}} {{heightened=@{spellheighten}}}" >
+
+                                    </button>
+                                {% endraw %}</td>
                             </tr>
                         </table>
                         <input type="checkbox" class="sheet-block-switch config_checkbox spell_config_checkbox"> <span class="config_checkbox_icon spell_config_checkbox">y</span>
                         <div class="sheet-block-b">
-                            {% if level != "Magic Items" %}
                             <div>
                                 <table>
                                     <tr class="table_header_details">
@@ -44,14 +47,18 @@
                                         <td>Reaction</td>
                                     </tr>
                                     <tr>
-                                        <td><input type="checkbox" name="attr_spellverbal" /></td>
-                                        <td><input type="checkbox" name="attr_spellsomatic" /></td>
-                                        <td><input type="checkbox" name="attr_spellmaterial" /></td>
-                                        <td><input type="checkbox" name="attr_spellreaction" /></td>
+                                        <td><input type="checkbox" name="attr_spellverbal" value="1" /></td>
+                                        <td><input type="checkbox" name="attr_spellsomatic" value="1" /></td>
+                                        <td><input type="checkbox" name="attr_spellmaterial" value="1" /></td>
+                                        <td><input type="checkbox" name="attr_spellreaction" value="1" /></td>
                                     </tr>
                                 </table>
                             </div>
                             <div>
+                                <table>
+                                    <tr class="table_header_details"><td>Cost</td></tr>
+                                    <tr><td><input type="text" name="attr_spellcost" /></td></tr>
+                                </table>
                                 <table>
                                     <tr class="table_header_details"><td>Range</td></tr>
                                     <tr><td><input type="text" name="attr_spellrange" /></td></tr>
@@ -73,14 +80,27 @@
                                     <tr><td><input type="text" name="attr_spellduration" /></td></tr>
                                 </table>
                             </div>
-                            {% endif %}
                             <textarea name="attr_spelltext"></textarea>
-                            {% if level != "Magic Items" %}
                             <div>
-                                <div>Hightened Effects:</div>
-                                <textarea name="attr_spellhighten"></textarea>
+                                <div>Critical Success:</div>
+                                <input type="text" name="attr_spellcritsuccess" />
                             </div>
-                            {% endif %}
+                            <div>
+                                <div>Success:</div>
+                                <input type="text" name="attr_spellsuccess" />
+                            </div>
+                            <div>
+                                <div>Failure:</div>
+                                <input type="text" name="attr_spellfail" />
+                            </div>
+                            <div>
+                                <div>Critical Failure:</div>
+                                <input type="text" name="attr_spellcritfail" />
+                            </div>
+                            <div>
+                                <div>Heightened Effects:</div>
+                                <textarea name="attr_spellheighten"></textarea>
+                            </div>
                         </div>
                     </div>
 
